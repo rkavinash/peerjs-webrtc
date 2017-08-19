@@ -6,7 +6,9 @@
   </h1>
 
   <h1>My peer Id = {{myPeerId}}</h1>
-  <input type="text" ng-model="anotherPeersId">
+  <input type="text" [(ngModel)]="anotherPeersId">
   <button (click)="connect()">connect Me</button>
+  <button (click)="videoConnect()">video Call</button>
+  <video #myVideo></video>
 
 </div>
