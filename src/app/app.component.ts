@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
       const video = this.myVideo.nativeElement;
-      this.peer = new Peer({key: '6cyvr39go3kdquxr'});
+      // this.peer = new Peer({key: '6cyvr39go3kdquxr'});
+      this.peer = new Peer({　host: 'ark-peerjs-server.herokuapp.com', secure: true, port: 443, key: 'peerjs', debug: 3})
 
       setTimeout(() => {
         this.myPeerId = this.peer.id;
