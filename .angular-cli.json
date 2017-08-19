@@ -22,7 +22,6 @@
         "styles.css"
       ],
       "scripts": [
-        "/node_modules/peerjs/dist/peer.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
