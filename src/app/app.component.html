@@ -12,7 +12,9 @@
         <div class="pure-forms">
           <input type="text" placeholder="Call user id..." [(ngModel)]="anotherPeersId" id="callto-id">
           <a class="pure-button pure-button-success" (click)="videoCall()" id="make-call">Call</a>
-          <a class="pure-button pure-button-error" (click)="endVideoCall()" id="end-call">End call</a>
+          <!--<a class="pure-button pure-button-error" (click)="endVideoCall()" id="end-call">End call</a>-->
+          <a class="pure-button pure-button-warning" (click)="muteMe()" id="end-call">Mute Me</a>
+          <a class="pure-button pure-button-warning" (click)="unMuteMe()" id="end-call">UnMute Me</a>
         </div>
       </div>
     </div>

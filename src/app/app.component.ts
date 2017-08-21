@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   peer: any;
   anotherPeersId: any;
   myPeerId: any;
+  localStream: any;
 
   constructor() {
   }
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
 
       this.peer.on('call', (call) => {
         n.getUserMedia({video: true, audio: true}, function(stream) {
+          this.localStream = stream;
           call.answer(stream); // Answer the call with an A/V stream.
           call.on('stream', (remoteStream) => {
             theirVideo.src = URL.createObjectURL(remoteStream);
@@ -61,9 +63,9 @@ export class AppComponent implements OnInit {
       n.getUserMedia = n.getUserMedia || n.webkitGetUserMedia || n.mozGetUserMedia;
 
       n.getUserMedia({video: true, audio: true}, (stream) => {
+        this.localStream = stream;
         const call = this.peer.call(this.anotherPeersId, stream);
         call.on('stream', (remoteStream) => {
-          console.log('teiir video called');
           theirVideo.src = URL.createObjectURL(remoteStream);
         });
       }, function(err) {
@@ -77,6 +79,14 @@ export class AppComponent implements OnInit {
       }, function(err) {
         console.log('Failed to close remote stream', err);
       });
+  }
+
+  muteMe() {
+    this.localStream.getAudioTracks()[0].enabled = false;
+  }
+
+  unMuteMe() {
+    this.localStream.getAudioTracks()[0].enabled = true;
   }
 
 }
