@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
 
       this.peer.on('call', (call) => {
         n.getUserMedia({video: true, audio: true}, function(stream) {
-          this.localStream = stream;
           call.answer(stream); // Answer the call with an A/V stream.
           call.on('stream', (remoteStream) => {
             theirVideo.src = URL.createObjectURL(remoteStream);
